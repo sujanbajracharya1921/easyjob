@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<section class="page-heading">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		<h1>All Vacancy</h1>
+		</div>
+	</div>
+</div>
+</section>
+<div class="container" style="background-color:#ccc;margin-top:10px;padding-top:10px; padding-bottom:10px;padding-left:5px;padding-right:5px;">
+	<div class="col-md-12">
+	<ul class="job_listings">
+	{% for v in vacancy %}
+		<li class="job_listing">
+			<a href="{% url 'companyvacancyclickdetails' v.id %}">
+				<div class="col-md-3">
+					<small style="color:blue;">Company Name</small>
+					<h5>{{ v.company }}</h5>
+
+					</div>
+
+				<div class="col-md-4">
+					<small style="color:blue;">Job Title</small>
+					<h5>{{ v.title }}</h5>
+
+				</div>
+				<div class="col-md-4">
+					<small style="color:blue;">Job location</small>
+					<h5>{{ v.vacancy_location}}</h5>
+				</div>
+
+			</a>
+		</li>
+
+	{% endfor %}
+	</ul>
+
+</div>
+</div>
+<br>

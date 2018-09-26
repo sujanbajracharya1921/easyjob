@@ -1,0 +1,41 @@
+{% extends 'master/master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="page-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h1>Create skill form</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page-content">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+				<h1>Employee skill account</h1>
+				<form action="{% url 'employeeskill' %}" method="POST" role="form">
+					{% csrf_token %}
+					{% for f in form %}
+						<div class="form-group">
+							<label>{{f.label_tag}} <span class="required">*</span></label>
+							{{f|add_class:'form-control'}}
+						</div>
+						{% if f.help_text %}
+					      <small style="color: grey">{{ f.help_text }}</small>
+					    {% endif %}
+					    {% for error in f.errors %}
+					      <p style="color: red">{{ error }}</p>
+					    {% endfor %}
+						{% endfor %}
+						<button type="submit" class="btn btn-primary">Save</button>
+					</form>
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endblock %}
+{% block title%}who are you{% endblock %}

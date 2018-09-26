@@ -1,0 +1,38 @@
+{% extends 'master/master.html' %}
+	{% load staticfiles %}
+	{% load widget_tweaks %}
+	{% block content %}
+		<section class="page-content">
+		<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<ul class="list-group">
+				  <li class="list-group-item"><a href="{% url 'dashboards' %}">Dashboard</li>
+				  <li class="list-group-item"><a href="{% url 'addvacancy' %}">Add vacancy</a></li>
+				  <li class="list-group-item"><a href="{% url 'allvacancy' %}">View all vacancy</a></li>
+					<li class="list-group-item"><a href="{% url 'updatecompany' %}">Company Update</a></li>
+
+
+				</ul>
+			</div>
+			<div class="col-md-8">
+			{% for v in vacancy %}
+				<div style="background: #eeeeee; padding:20px; margin-top:20px ">
+					<h3>{{v.title}}</h3>
+					<p>{% autoescape off %}{{v.description | truncatewords:30 }}{% endautoescape %}</p>
+					<a href="{% url 'readmore' v.id %}" class="btn btn-info">Read more...</a>
+					<a href="{% url 'updatevacancy' v.id %}" class="btn btn-success">Update</a>
+					<a href="{% url 'deletevacancy' v.id %}" class="btn btn-danger">Delete</a>
+					<a href="{% url 'list_of_applicant' v.id %}" class="btn btn-info" style="float:right;">List of Applicant</a>
+
+				</div>
+				<hr>
+				<hr>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+
+		</section>
+	{% endblock %}
+{% block title%} Posted vacancy {% endblock %}

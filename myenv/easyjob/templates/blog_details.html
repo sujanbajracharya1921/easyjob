@@ -1,0 +1,123 @@
+{% extends 'master/master.html' %}
+{% block title %}Blog title{% endblock %}
+{% block content %}
+	{% load staticfiles %}
+			<!-- Page Heading / End -->
+
+			<!-- Page Content -->
+			<div class="page-content">
+				<div class="container">
+					
+					<div class="row">
+						<div class="content col-md-8">
+							<!-- Post (Video Format) -->
+							<article class="entry entry__video entry__with-icon">
+								<header class="entry-header">
+									<h3><a href="blog-post.html">{{ single_blog.title }}</a></h3>
+									<div class="entry-meta">
+										<span class="entry-date"><i class="fa fa-calendar"></i> <a href="#">April 12, 2015</a></span>
+										<span class="entry-category"><i class="fa fa-folder"></i> <a href="#">Plaster &amp; Drywall</a></span>
+										<span class="entry-comments"><i class="fa fa-comments"></i> <a href="#">0 Comments</a></span>
+									</div>
+								</header>
+								<div class="entry-thumb-wrapper">
+									<figure class="alignnone video-holder">
+										<img src="{{MEDIA_URL}}{{single_blog.image.url}}" width="612" height="343" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen/>
+									</figure>
+								</div>
+								<div class="excerpt">
+									{% autoescape off %}{{single_blog.content}}{% endautoescape %}
+								</div>
+							</article>
+							<!-- Post (Video Format) / End -->
+						</div>
+
+						<aside class="sidebar col-md-4">
+							
+							<hr class="visible-sm visible-xs lg">
+
+							<!-- Widget :: Categories -->
+							<div class="widget_categories widget widget__sidebar">
+								<h4 class="widget-title">Categories</h4>
+								<div class="widget-content">
+									<ul>
+										<li><a href="#">Appliance Services</a> (3)</li>
+										<li><a href="#">Cabinets &amp; Countertops</a> (10)</li>
+										<li><a href="#">Carpentry</a> (12)</li>
+										<li><a href="#">Chimney Sweeping</a> (8)</li>
+										<li><a href="#">Closet Design</a> (3)</li>
+										<li><a href="#">Fences</a> (5)</li>
+										<li><a href="#">Hot Tubs, Spas &amp; Saunas</a> (3)</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /Widget :: Categories -->
+
+							<!-- Widget :: Tags Cloud -->
+							<div class="widget_tag_cloud widget widget__sidebar">
+								<h4 class="widget-title">Tags</h4>
+								<div class="widget-content">
+									<div class="tagcloud">
+										<a href="#">painting</a>
+										<a href="#">design</a>
+										<a href="#">refinish</a>
+										<a href="#">pools</a>
+										<a href="#">handiwork</a>
+										<a href="#">furniture</a>
+										<a href="#">drywall</a>
+										<a href="#">electrical</a>
+									</div>
+								</div>
+							</div>
+							<!-- /Widget :: Tags Cloud -->
+
+							<!-- Widget :: Text Widget -->
+							<div class="widget_text widget widget__sidebar">
+								<h4 class="widget-title">Short Info</h4>
+								<div class="widget-content">
+									Depending on your latitude, winter nights can be long enough to lose a considerable amount of heat from what otherwise is a well-insulated home.
+								</div>
+							</div>
+							<!-- /Widget :: Text Widget -->
+
+							<!-- Widget :: Latest Posts -->
+							<div class="widget_latest-posts widget widget__sidebar">
+								<h4 class="widget-title">Latest Posts</h4>
+								<div class="widget-content">
+									<ul class="latest-posts-list">
+										<li>
+											<figure class="thumbnail"><a href="#"><img src="images/samples/post-img1-sm.jpg" alt=""></a></figure>
+											<h5 class="title"><a href="#">Build an Emergency Kit</a></h5>
+											<span class="date">April, 18 2015</span>
+										</li>
+										<li>
+											<figure class="thumbnail"><a href="#"><img src="images/samples/post-img2-sm.jpg" alt=""></a></figure>
+											<h5 class="title"><a href="#">DIY Safety Tips</a></h5>
+											<span class="date">March, 21 2015</span>
+										</li>
+										<li>
+											<figure class="thumbnail"><a href="#"><img src="images/samples/post-img3-sm.jpg" alt=""></a></figure>
+											<h5 class="title"><a href="#">3 Ways for Woodworkers to Save Money</a></h5>
+											<span class="date">March, 21 2015</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /Widget :: Latest Posts -->
+
+							<!-- Widget :: Flickr -->
+							<div class="widget_flickr widget widget__sidebar">
+								<h4 class="widget-title">Flickr</h4>
+								<div class="widget-content">
+									<!-- Flickr images will appear here -->
+									<ul class="flickr-feed"></ul>
+								</div>
+							</div>
+							<!-- /Widget :: Flickr -->
+
+						</aside>
+					</div>
+
+				</div>
+			</div>
+{% endblock%}

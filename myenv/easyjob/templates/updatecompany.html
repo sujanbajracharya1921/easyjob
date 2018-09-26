@@ -1,0 +1,25 @@
+{% extends 'master/master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="page-content">
+<div class="container">
+<div class="col-md-4">
+  <ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'dashboards' %}"> Company Dashboard</li>
+    <li class="list-group-item"><a href="{% url 'addvacancy' %}">Add vacancy</a></li>
+    <li class="list-group-item"><a href="{% url 'allvacancy' %}">View all vacancy</a></li>
+    <li class="list-group-item"><a href="{% url 'updatecompany' %}">Company Update</a></li>
+
+    </ul>
+</div>
+<div class="col-md-8">
+<form method='POST' action="{% url 'updatecompany'%}">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type='submit' class="btn btn-primary">update</button>
+</form>
+</div>
+</div>
+</section>
+{% endblock %}
+{% block title%} Update Company {% endblock %}

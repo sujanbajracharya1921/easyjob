@@ -1,0 +1,32 @@
+{% extends 'master\master.html' %}
+
+
+ {% block title %} Your CV {% endblock %}
+
+
+ {% block content %}
+
+
+
+   <!-- Page Content -->
+   <section class="page-content">
+     <div class="container">
+       <form method="post" action="{% url 'cvsave' %}">
+         {% csrf_token %}
+         <input type="hidden" value="{{job_id}}" name="job_id">
+          <div class="input-group">
+             <select class="form-control" name="cvid">
+               {% for c in cv %}
+                  <option value="{{c.id}}">{{c.cv_file}}</option>
+
+                {% endfor %}
+             </select>
+             <input type="hidden" value="{{job_id}}" name="jobid">
+          </div>
+          <button type="submit" class="btn btn-primary">Apply </button>
+       </form>
+
+     </div>
+   </section>
+   <!-- Page Content / End -->
+{% endblock %}

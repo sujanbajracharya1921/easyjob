@@ -1,0 +1,45 @@
+{% extends 'master/master.html' %}
+	{% block content %}
+	{% load staticfiles %}
+	{% load widget_tweaks %}
+		<section class="page-content">
+		<div class="container">
+		<div class="col-sm-4">
+			<ul class="list-group">
+			  <li class="list-group-item"><a href="{% url 'dashboard' %}">Dashboard</li>
+			  <li class="list-group-item"><a href="{% url 'updateuser' %}">User info</a></li>
+			  <li class="list-group-item"><a href="{% url 'updateuserskill' %}">Skill</a></li>
+			  <li class="list-group-item"><a href="{% url 'user_cv' %}">CV</a></li>
+			  <li class="list-group-item"><a href='#'>Vestibulum at eros</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-8">
+			<hr/>
+			<form method="POST" enctype="multipart/form-data" action="{% url 'user_cv' %}">
+				{{form.as_p}}
+				{% csrf_token %}
+			<button type="submit" class="btn btn-primary">Save</button>
+			</form>
+			<hr/>
+			<table class="table">
+				<thead>
+					<th>My name</th>
+					<th>My file</th>
+					<th>Image</th>
+					<th>Actions</th>
+				</thead>
+				<tbody>
+				{% for c in cv %}
+					<tr>
+						<td>{{c.name}}</td>
+						<td><a href="{{MEDIA_URL}}{{c.cv_file.url}}" target="_blank">{{c.cv_file}}</a></td>
+						<td><a href="{% url 'updateusercv' %}"><i class="fa fa-pencil"></i></a>|<a href="{% url 'deleteusercv' c.id %}"><i class="fa fa-trash"></i></a></td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		</div>
+		</section>
+	{% endblock %}
+{% block title%} User cv {% endblock %}

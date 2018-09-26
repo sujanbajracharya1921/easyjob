@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!-- Slider -->
+			<section class="slider-holder">
+				<div class="flexslider carousel">
+					<ul class="slides">
+						{% for x in slider %}
+						<li>
+							<img src="{{MEDIA_URL}}{{x.image.url}}" alt="" />
+						</li>
+						{% endfor %}
+					</ul>
+
+					<div class="search-box">
+						<div class="container">
+							<div class="search-box-inner">
+								<h1>Looking For More Jobs?</h1>
+								<form action="{% url 'search' %}" method="POST" role="form">
+                 {% csrf_token %}
+									<div class="container">
+										<div class="col-md-1">
+										</div>
+
+										<div class="col-md-9">
+											<div class="form-group">
+												<input type="text" name="srh" class="form-control" placeholder="Search by job Title or job location">
+											</div>
+										</div>
+
+										<div class="col-md-1">
+											<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i></button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Slider / End -->

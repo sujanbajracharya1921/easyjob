@@ -1,0 +1,30 @@
+{% extends 'master/master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="page-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h1>List Of Applicant</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page-content">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+
+				{% for x in  cv %}
+          <ul>
+					<li><a href="{{MEDIA_URL}}{{x.cv_file.url}}" target="_blank">{{x.name}}</a></li>
+				</ul>
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endblock %}
+{% block title%}Company Application{% endblock %}

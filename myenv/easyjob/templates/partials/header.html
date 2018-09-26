@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!-- Header -->
+		<header class="header header-menu-fullw">
+
+			<!-- Header Top Bar -->
+			<div class="header-top">
+				<div class="container">
+					<div class="header-top-left">
+						<button class="btn btn-sm btn-default menu-link menu-link__secondary">
+							<i class="fa fa-bars"></i>
+						</button>
+						<div class="menu-container">
+							<ul class="header-top-nav header-top-nav__secondary">
+								<li><a href="#"><i class="fa fa-twitter"></i> <span class="nav-label">Twitter</span></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i> <span class="nav-label">Facebook</span></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i> <span class="nav-label">Google+</span></a></li>
+								<li><a href="#"><i class="fa fa-pinterest"></i> <span class="nav-label">Pinterest</span></a></li>
+								<li><a href="#"><i class="fa fa-instagram"></i> <span class="nav-label">Instagram</span></a></li>
+								<li><a href="#"><i class="fa fa-rss"></i> <span class="nav-label">RSS Feed</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="header-top-right">
+						<button class="btn btn-sm btn-default menu-link menu-link__tertiary">
+							<i class="fa fa-user"></i>
+						</button>
+						<div class="menu-container">
+							<ul class="header-top-nav header-top-nav__tertiary">
+								{% if user.is_authenticated %}
+	    						<p style="float:left;padding-top:5px;">Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+
+
+									    <li><a href="{% url 'headerprofile' %}"><i class="fa fa-user"></i>profile</a></li>
+											<li><a href="{% url 'logout' %}"><i class="fa fa-user-plus"></i> Logout</a></li>
+
+									{% else %}
+									<p style="float:left;padding-top:5px;font-size:11px;">Welcome, new user. Please log in.</p>
+									<li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+									<li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+
+							{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Header Top Bar / End -->
+
+			<div class="header-main">
+				<div class="container">
+					<!-- Logo -->
+					<div class="logo">
+						<img src="{% static 'images/index.png' %}" alt="Easyjob"><br>
+							<small style="color:blue;margin-left:10px;">Get Job Easily</small>
+						<!-- <h1><a href="index.html"><span>Handy</span>Man</a></h1> -->
+					</div>
+					<!-- Logo / End -->
+
+					<button type="button" class="navbar-toggle">
+						<i class="fa fa-bars"></i>
+					</button>
+
+					<!-- Navigation -->
+					<nav class="nav-main">
+						<div class="nav-main-inner">
+							<ul data-breakpoint="992" class="flexnav">
+								<li class="active"><a href="{% url 'index' %}">Home</a></li>
+
+
+
+								<li><a href="{% url 'blog' %}">Blog</a></li>
+
+								<li><a href="{% url 'Contact_Us' %}">Contacts</a></li>
+							</ul>
+						</div>
+					</nav>
+					<!-- Navigation / End -->
+
+				</div>
+			</div>
+
+		</header>
+		<!-- Header / End -->

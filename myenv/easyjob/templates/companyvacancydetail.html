@@ -1,0 +1,26 @@
+{% extends 'master\master.html' %}
+
+
+ {% block title %} Vacancy {% endblock %}
+
+
+ {% block content %}
+
+
+
+   <!-- Page Content -->
+   <section class="page-content">
+     <div class="container">
+
+         <h3>{{vacancy.title}}</h3>
+         <p>{% autoescape off %}  {{vacancy.description}}  {% endautoescape %}</p>
+         <form method="post" action ="">
+           {{form.as_p}}
+           {% csrf_token %}
+           <a href="{% url 'user_existingcv' vacancy.id %}" class="btn btn-primary" style="float:left;">Apply Now </a>
+
+         </form>
+     </div>
+   </section>
+   <!-- Page Content / End -->
+{% endblock %}

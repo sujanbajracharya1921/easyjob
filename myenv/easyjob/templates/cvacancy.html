@@ -1,0 +1,47 @@
+{% extends 'master/master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="page-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h1>Post Vacancy</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<ul class="list-group">
+				  <li class="list-group-item"><a href="{% url 'dashboards' %}">Company Dashboard</li>
+				  <li class="list-group-item"><a href="{% url 'addvacancy' %}">Add vacancy</a></li>
+				  <li class="list-group-item"><a href="{% url 'allvacancy' %}">View all vacancy</a></li>
+					<li class="list-group-item"><a href="{% url 'updatecompany' %}">Company Update</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-8">
+				<form action="{% url 'addvacancy' %}" method="POST" role="form">
+					{% csrf_token %}
+					{% for f in form %}
+						<div class="form-group">
+							<label>{{f.label_tag}} <span class="required">*</span></label>
+							{{f|add_class:'form-control'}}
+						</div>
+						{% if f.help_text %}
+					      <small style="color: grey">{{ f.help_text }}</small>
+					    {% endif %}
+					    {% for error in f.errors %}
+					      <p style="color: red">{{ error }}</p>
+					    {% endfor %}
+						{% endfor %}
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endblock %}
+{% block title%}Create or Add vacancy{% endblock %}

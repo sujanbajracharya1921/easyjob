@@ -1,0 +1,28 @@
+{% extends 'master/master.html' %}
+	{% block content %}
+	<section class="page-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h1>Who are you?</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Page Heading / End -->
+
+<!-- Page Content -->
+<section class="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-4">
+				{% csrf_token %}
+				<a class="btn btn-primary" href="{% url 'employeeaccount' %}">i am employee</a> 
+				<a class="btn btn-primary" href="{% url 'companyaccount' %}">i am company</a>
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endblock %}
+{% block title%}who are you{% endblock %}
