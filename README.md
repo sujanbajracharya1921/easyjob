@@ -6,6 +6,8 @@ Take the terminal an go to the project directory
 
 cd /your/path/to/project/
 
+cd myenv
+
 Activate your virtualenv --> (scripts\activate)
 
 cd easyjob
